@@ -35,8 +35,8 @@ public class ClienteControler {
     public void deletarCliente(@PathVariable Integer id){
         clienteService.deletarCliente(id);
     }
-    @PutMapping("/alterarStatus/{id}")
-    public void alterarStatus(@PathVariable Integer id){
-        clienteService.alterarStatus(id);
+    @PutMapping("/alterarStatusCliente/{id}")
+    public void alterarStatusCliente(@PathVariable Integer id){
+        clienteService.alterarStatusCliente(id);
     }
 }
