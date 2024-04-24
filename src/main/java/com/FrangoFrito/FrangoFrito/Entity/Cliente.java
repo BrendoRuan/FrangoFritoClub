@@ -5,15 +5,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.Valid;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Cliente extends Pessoa{
     private boolean status;
     public Cliente() {
     }
-    public Cliente(String cpf, String nome, String endereco, Date data_nasc, boolean status) {
-        super(cpf, nome, endereco, data_nasc);
+    public Cliente(String cpf, String nome, String endereco, LocalDate dataNasc, boolean status) {
+        super(cpf, nome, endereco, dataNasc);
         this.status = status;
     }
 

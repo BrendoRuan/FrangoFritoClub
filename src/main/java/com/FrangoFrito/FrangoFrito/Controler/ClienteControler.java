@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ClienteControler {
@@ -31,9 +32,19 @@ public class ClienteControler {
         return clienteService.buscarCliente(nome);
     }
 
+    @GetMapping("/buscarClienteId/{id}")
+    public Optional<Cliente> buscarClienteId(@PathVariable Integer id) {
+        return clienteService.buscarClienteId(id);
+    }
     @DeleteMapping("/deletarCliente/{id}")
     public void deletarCliente(@PathVariable Integer id){
         clienteService.deletarCliente(id);
+    }
+
+    @PutMapping("/atualizarCliente/{id}")
+    public void atualizarCliente(@PathVariable @RequestBody Integer id){
+        clienteService.atualizarCliente(id);
+
     }
     @PutMapping("/alterarStatusCliente/{id}")
     public void alterarStatusCliente(@PathVariable Integer id){

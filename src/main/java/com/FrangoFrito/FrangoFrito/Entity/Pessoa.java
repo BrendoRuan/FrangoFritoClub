@@ -2,6 +2,7 @@ package com.FrangoFrito.FrangoFrito.Entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -13,14 +14,14 @@ public abstract class Pessoa {
     private String cpf;
     private String nome;
     private String endereco;
-    private Date data_nasc;
+    private LocalDate dataNasc;
     public Pessoa(){}
 
-    public Pessoa(String cpf, String nome, String endereco, Date data_nasc) {
+    public Pessoa(String cpf, String nome, String endereco, LocalDate dataNasc) {
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
-        this.data_nasc = data_nasc;
+        this.dataNasc = dataNasc;
     }
 
     public String getCpf() {
@@ -47,12 +48,12 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-    public Date getData_nasc() {
-        return data_nasc;
+    public LocalDate getDataNasc() {
+        return dataNasc;
     }
 
-    public void setData_nasc(Date data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setDataNasc(LocalDate dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
     public Integer getId() {

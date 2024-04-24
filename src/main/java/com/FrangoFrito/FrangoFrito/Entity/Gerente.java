@@ -2,6 +2,7 @@ package com.FrangoFrito.FrangoFrito.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,8 +12,8 @@ public class Gerente extends Pessoa{
     public Gerente(){
 
     }
-    public Gerente(String cpf, String nome, String endereco, Date data_nasc, boolean status) {
-        super(cpf, nome, endereco, data_nasc);
+    public Gerente(String cpf, String nome, String endereco, LocalDate dataNasc, boolean status) {
+        super(cpf, nome, endereco, dataNasc);
         this.status = status;
     }
 
