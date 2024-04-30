@@ -41,10 +41,14 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
+    //Metodo para atualizar cliente
     public Cliente atualizarCliente(Integer id){
         Cliente cliente = clienteRepository.findById(id).orElse(null);
         if(cliente != null){
             cliente.setNome(cliente.getNome());
+            cliente.setCpf(cliente.getCpf());
+            cliente.setEndereco(cliente.getEndereco());
+            cliente.setDataNasc(cliente.getDataNasc());
             return clienteRepository.save(cliente);
             }
         return cliente;
