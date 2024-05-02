@@ -1,9 +1,11 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
+import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import org.springframework.beans.BeanUtils;
 
 @Entity
 public class Produto {
@@ -24,7 +26,9 @@ public class Produto {
         this.valorDeVenda = valorDeVenda;
         this.categoria = categoria;
     }
-    public Produto() {
+    public Produto() {}
+    public Produto(ProdutoDTO produto){
+        BeanUtils.copyProperties(produto,this);
     }
 
     public Integer getId() {

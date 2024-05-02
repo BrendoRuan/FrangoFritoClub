@@ -1,9 +1,11 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
+import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +23,9 @@ public class Categoria {
     public Categoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
     }
-    public Categoria() {
-
+    public Categoria() {}
+    public Categoria(CategoriaDTO categoria) {
+        BeanUtils.copyProperties(categoria,this);
     }
 
     public Integer getId() {

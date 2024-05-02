@@ -1,20 +1,23 @@
 package com.FrangoFrito.FrangoFrito.Dto;
 
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
+import org.springframework.beans.BeanUtils;
 
-public class CategoriaDto {
+public class CategoriaDTO {
     private Integer id;
     private String nomeCategoria;
+    private boolean statusCategoria;
 
-    public CategoriaDto() {
-    }
-    public CategoriaDto(String nomeCategoria) {
+    public CategoriaDTO(Integer id, String nomeCategoria, boolean statusCategoria) {
+        this.id = id;
         this.nomeCategoria = nomeCategoria;
+        this.statusCategoria = statusCategoria;
     }
-    public CategoriaDto(Categoria categoria) {
-        nomeCategoria = categoria.getNomeCategoria();
-        id = categoria.getId();
+    public CategoriaDTO(){}
+    public CategoriaDTO(Categoria categoria) {
+        BeanUtils.copyProperties(categoria,this);
     }
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +32,13 @@ public class CategoriaDto {
 
     public void setNomeCategoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
+    }
+
+    public boolean isStatusCategoria() {
+        return statusCategoria;
+    }
+
+    public void setStatusCategoria(boolean statusCategoria) {
+        this.statusCategoria = statusCategoria;
     }
 }

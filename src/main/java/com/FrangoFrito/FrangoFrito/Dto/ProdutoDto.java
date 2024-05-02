@@ -2,25 +2,28 @@ package com.FrangoFrito.FrangoFrito.Dto;
 
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;
+import org.springframework.beans.BeanUtils;
 
-public class ProdutoDto {
+public class ProdutoDTO {
     private Integer id;
     private String nomeProduto;
     private Double valorDeCusto;
     private Double valorDeVenda;
+    private boolean statusProduto;
     private Categoria categoria;
 
-    public ProdutoDto() {
-    }
-    public ProdutoDto(String nomeProduto, Double valorDeCusto, Double valorDeVenda) {
+    public ProdutoDTO(Integer id, String nomeProduto, Double valorDeCusto, Double valorDeVenda, boolean statusProduto) {
+        this.id = id;
         this.nomeProduto = nomeProduto;
         this.valorDeCusto = valorDeCusto;
         this.valorDeVenda = valorDeVenda;
+        this.statusProduto = statusProduto;
+        this.categoria = categoria;
     }
-    public ProdutoDto(Produto produto) {
-        nomeProduto = produto.getNomeProduto();
-        valorDeCusto = produto.getValorDeCusto();
-        valorDeVenda = produto.getValorDeVenda();
+    public ProdutoDTO(){}
+
+    public ProdutoDTO(Produto produto){
+        BeanUtils.copyProperties(produto,this);
     }
 
     public Integer getId() {
@@ -53,6 +56,14 @@ public class ProdutoDto {
 
     public void setValorDeVenda(Double valorDeVenda) {
         this.valorDeVenda = valorDeVenda;
+    }
+
+    public boolean isStatusProduto() {
+        return statusProduto;
+    }
+
+    public void setStatusProduto(boolean statusProduto) {
+        this.statusProduto = statusProduto;
     }
 
     public Categoria getCategoria() {

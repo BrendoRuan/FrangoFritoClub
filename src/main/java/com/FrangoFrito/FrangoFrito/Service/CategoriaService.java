@@ -1,8 +1,9 @@
 package com.FrangoFrito.FrangoFrito.Service;
 
-import com.FrangoFrito.FrangoFrito.Dto.CategoriaDto;
+import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Repository.CategoriaRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,25 +17,26 @@ public class CategoriaService {
        this.categoriaRepository = categoriaRepository;
     }
 
-    //Metodo para Cadastrar um Cliente
-    public void cadastrarCategoria(Categoria categoria) {
-        categoriaRepository.save(categoria);
+    //Metodo para Cadastrar uma Categoria
+    public void cadastrarCategoria(@Valid CategoriaDTO categoriaDTO) {
+        Categoria categoriaEntity = new Categoria(categoriaDTO);
+        categoriaRepository.save(categoriaEntity);
+
     }
 
-    //Metodo para Buscar um Cliente
+    //Metodo para Buscar uma categoria
     public Categoria buscarCategoria(String nomeCategoria) {
         return categoriaRepository.findByNomeCategoria(nomeCategoria);
     }
 
     //Metodo para Buscar um Categoria pelo Id
-    //public Optional<Categoria> buscarCategoriaId(Integer id) {
-      //  return categoriaRepository.findById(id);
-   // }
-
-    public CategoriaDto buscarCategoriaDtoId(Integer id) {
-        Categoria  categoria = categoriaRepository.findById(id).get();
-        CategoriaDto categoriaDto = new CategoriaDto(categoria);
-        return categoriaDto;
+    public Optional<CategoriaDTO> buscarCategoriaId(Integer id) {
+        Optional<Categoria> categoriaOptional = categoriaRepository.findById(id);
+        return categoriaOptional.map(categoria -> {
+            CategoriaDTO categoriaDTO = new CategoriaDTO();
+            categoriaDTO.setId(categoria.getId());
+            return categoriaDTO;
+        });
     }
     //Metodo para Deletar uma categoria pelo Id
     public void deletarCategoria(Integer id) {
@@ -42,9 +44,9 @@ public class CategoriaService {
     }
 
     //Metodo para Fazer uma Listagem das categoria
-    public List<Categoria> listarCategoria() {
-        return categoriaRepository.findAll();
-    }
+    public List<CategoriaDTO> listarCategoria() {
+        List<Categoria> categoria = categoriaRepository.findAll();
+        return categoria.stream().map(CategoriaDTO::new).toList();}
     //Metodo para alterar o status do Cliente
     public Categoria alterarStatusCategoria(Integer id){
         Categoria categoria = categoriaRepository.findById(id).orElse(null);
@@ -54,6 +56,4 @@ public class CategoriaService {
         }
         return categoria;
     }
-
-
 }

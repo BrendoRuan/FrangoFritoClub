@@ -1,11 +1,10 @@
 package com.FrangoFrito.FrangoFrito.Controler;
 
-import com.FrangoFrito.FrangoFrito.Dto.ProdutoDto;
+import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;
 import com.FrangoFrito.FrangoFrito.Service.ProdutoService;
 import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +18,8 @@ public class ProdutoControler {
         this.produtoService = produtoService;
     }
     @PostMapping("/cadastrarProduto")
-    public ResponseEntity<Produto> cadastrarProduto(@RequestBody ProdutoDto produtoDto){
-        Produto cadastrarProduto = produtoService.cadastrarProduto(produtoDto);
-        return ResponseEntity.ok(cadastrarProduto);
+    public void cadastrarProduto(@Valid @RequestBody  @PathVariable ProdutoDTO produtoDTO){
+        produtoService.cadastrarProduto(produtoDTO);
     }
 
     @GetMapping("/listarProduto")
@@ -34,10 +32,10 @@ public class ProdutoControler {
         return produtoService.buscarProduto(nomeProduto);
     }
 
-   // @GetMapping("/buscarProdutoId/{id}")
-    //public Optional<Produto> buscarProdutoId(@PathVariable Integer id){
-      // return produtoService.buscarProdutoId(id);
-    //}
+    @GetMapping("/buscarProdutoId/{id}")
+    public Optional<Produto> buscarProdutoId(@PathVariable Integer id){
+       return produtoService.buscarProdutoId(id);
+    }
     @DeleteMapping("/deletarProduto/{id}")
     public void deletarProduto(@PathVariable Integer id){
         produtoService.deletarProduto(id);
