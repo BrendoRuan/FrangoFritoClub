@@ -1,7 +1,7 @@
 package com.FrangoFrito.FrangoFrito.Service;
 
+import com.FrangoFrito.FrangoFrito.Dto.CategoriaDto;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
-import com.FrangoFrito.FrangoFrito.Entity.Cliente;
 import com.FrangoFrito.FrangoFrito.Repository.CategoriaRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +27,15 @@ public class CategoriaService {
     }
 
     //Metodo para Buscar um Categoria pelo Id
-    public Optional<Categoria> buscarCategoriaId(Integer id) {
-        return categoriaRepository.findById(id);
-    }
+    //public Optional<Categoria> buscarCategoriaId(Integer id) {
+      //  return categoriaRepository.findById(id);
+   // }
 
+    public CategoriaDto buscarCategoriaDtoId(Integer id) {
+        Categoria  categoria = categoriaRepository.findById(id).get();
+        CategoriaDto categoriaDto = new CategoriaDto(categoria);
+        return categoriaDto;
+    }
     //Metodo para Deletar uma categoria pelo Id
     public void deletarCategoria(Integer id) {
         categoriaRepository.deleteById(id);
@@ -49,4 +54,6 @@ public class CategoriaService {
         }
         return categoria;
     }
+
+
 }

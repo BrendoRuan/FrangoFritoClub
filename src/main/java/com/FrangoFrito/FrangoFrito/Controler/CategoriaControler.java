@@ -1,5 +1,6 @@
 package com.FrangoFrito.FrangoFrito.Controler;
 
+import com.FrangoFrito.FrangoFrito.Dto.CategoriaDto;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Cliente;
 import com.FrangoFrito.FrangoFrito.Service.CategoriaService;
@@ -30,10 +31,15 @@ public class CategoriaControler {
         return categoriaService.buscarCategoria(nomeCategoria);
     }
 
-    @GetMapping("/buscarCategoriaId/{id}")
-    public Optional<Categoria> buscarCategoriaId(@PathVariable Integer id){
-        return categoriaService.buscarCategoriaId(id);
-    }
+   // @GetMapping("/buscarCategoriaId/{id}")
+    //public Optional<Categoria> buscarCategoriaId(@PathVariable Integer id){
+    //    return categoriaService.buscarCategoriaId(id);
+    //}
+   @GetMapping("/buscarCategoriaId/{id}")
+   public CategoriaDto buscarCategoriaDtoId(@PathVariable Integer id){
+       return categoriaService.buscarCategoriaDtoId(id);
+   }
+
     @DeleteMapping("/deletarCategoria/{id}")
     public void deletarCategoria(@PathVariable Integer id){
         categoriaService.deletarCategoria(id);
