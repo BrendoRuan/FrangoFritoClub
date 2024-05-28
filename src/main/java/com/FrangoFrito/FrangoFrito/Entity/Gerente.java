@@ -7,22 +7,22 @@ import java.util.Date;
 
 @Entity
 public class Gerente extends Pessoa{
-    private boolean status;
+    private boolean statusGerente;
 
     public Gerente(){
 
     }
-    public Gerente(String cpf, String nome, String endereco, LocalDate dataNasc, boolean status) {
-        super(cpf, nome, endereco, dataNasc);
-        this.status = status;
+    public Gerente(String cpf, String nome, String endereco, LocalDate dataNasc,String email,String senha, boolean statusGerente) {
+        super(cpf, nome, endereco, dataNasc,email,senha);
+        this.statusGerente = statusGerente;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean getstatusGerente() {
+        return statusGerente;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setstatusGerente(boolean statusGerente) {
+        this.statusGerente = statusGerente;
     }
 
 }

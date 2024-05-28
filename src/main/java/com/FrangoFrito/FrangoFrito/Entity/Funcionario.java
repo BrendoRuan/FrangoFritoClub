@@ -1,28 +1,24 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Funcionario extends Pessoa{
-    private boolean Status;
+    private boolean statusFuncionario;
 
-    public Funcionario(){
-
-    }
-    public Funcionario(String cpf, String nome, String endereco, LocalDate dataNasc, boolean status) {
-        super(cpf, nome, endereco, dataNasc);
-        Status = status;
+    public Funcionario(){}
+    public Funcionario(String cpf, String nome, String endereco, LocalDate dataNasc, boolean statusCliente, String email, String senha) {
+        super(cpf, nome, endereco, dataNasc,email,senha);
+        this.statusFuncionario = statusFuncionario;
     }
 
-    public boolean isStatus() {
-        return Status;
+    public boolean getStatusFuncionario() {
+        return statusFuncionario;
     }
 
-    public void setStatus(boolean status) {
-        this.Status = status;
+    public void setStatusFuncionario(boolean statusFuncionario) {
+        this.statusFuncionario = statusFuncionario;
     }
 }

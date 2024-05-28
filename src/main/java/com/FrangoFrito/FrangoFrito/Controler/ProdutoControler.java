@@ -17,31 +17,42 @@ public class ProdutoControler {
     public ProdutoControler(ProdutoService produtoService){
         this.produtoService = produtoService;
     }
+
     @PostMapping("/cadastrarProduto")
-    public void cadastrarProduto(@Valid @RequestBody  @PathVariable ProdutoDTO produtoDTO){
+    public void cadastrarProduto(@Valid @RequestBody ProdutoDTO produtoDTO){
         produtoService.cadastrarProduto(produtoDTO);
     }
 
     @GetMapping("/listarProduto")
-    public List<Produto> getAllProduto(){
+    public List<ProdutoDTO> getAllProduto(){
         return produtoService.listarProduto();
     }
 
     @GetMapping("/buscarProduto/{nomeProduto}")
-    public Produto buscarProduto(@PathVariable String nomeProduto){
+    public List<ProdutoDTO> buscarProduto(@PathVariable String nomeProduto){
         return produtoService.buscarProduto(nomeProduto);
     }
 
     @GetMapping("/buscarProdutoId/{id}")
-    public Optional<Produto> buscarProdutoId(@PathVariable Integer id){
+    public Optional<ProdutoDTO> buscarProdutoId(@PathVariable Integer id){
        return produtoService.buscarProdutoId(id);
     }
+    @PutMapping("atualizarProduto/{id}")
+    public void atualizarProduto(@PathVariable Integer id, @Valid @RequestBody ProdutoDTO produtoDTO){produtoService.atualizarProduto(id,produtoDTO);}
+
     @DeleteMapping("/deletarProduto/{id}")
     public void deletarProduto(@PathVariable Integer id){
         produtoService.deletarProduto(id);
     }
+
+
     @PutMapping("/alterarStatusProduto/{id}")
     public void alterarStatusProduto(@PathVariable Integer id){
         produtoService.alterarStatusProduto(id);
     }
+    @PutMapping("/alterarStatusProdutoEmDestaque/{id}")
+    public void alterarStatusProdutoEmDestaque(@PathVariable Integer id){
+        produtoService.alterarStatusProdutoEmDestaque(id);
+    }
 }
+

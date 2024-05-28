@@ -1,10 +1,8 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
 import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
@@ -13,9 +11,12 @@ import java.util.List;
 @Entity
 public class Categoria {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotNull
 
     private String nomeCategoria;
+    @NotNull
     private boolean statusCategoria;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -28,7 +29,7 @@ public class Categoria {
         BeanUtils.copyProperties(categoria,this);
     }
 
-    public Integer getId() {
+    public Integer getIdCategoria() {
         return id;
     }
 

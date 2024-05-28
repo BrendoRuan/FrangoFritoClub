@@ -18,6 +18,8 @@ public class CategoriaDTO {
         BeanUtils.copyProperties(categoria,this);
     }
 
+
+
     public Integer getId() {
         return id;
     }

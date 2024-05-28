@@ -1,27 +1,46 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 import java.util.Date;
 
-@MappedSuperclass
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String cpf;
-    private String nome;
-    private String endereco;
-    private LocalDate dataNasc;
+    protected Integer id;
+    @CPF
+    @NotNull
+    protected String cpf;
+    @Size(min=5,max=255)
+    @NotNull
+    protected String nome;
+    @Size(min=5,max=255)
+    protected String endereco;
+    @NotNull
+    protected LocalDate dataNasc;
+    @Email
+    @NotNull
+    protected String email;
+    @Size(min=5,max=20)
+    @NotNull
+    protected String senha;
     public Pessoa(){}
 
-    public Pessoa(String cpf, String nome, String endereco, LocalDate dataNasc) {
+    public Pessoa(String cpf, String nome, String endereco, LocalDate dataNasc,String email,String senha) {
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
         this.dataNasc = dataNasc;
+        this.email = email;
+        this.senha = senha;
     }
 
     public String getCpf() {
@@ -62,5 +81,21 @@ public abstract class Pessoa {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 }

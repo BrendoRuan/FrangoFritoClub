@@ -1,8 +1,6 @@
 package com.FrangoFrito.FrangoFrito.Controler;
 
-import com.FrangoFrito.FrangoFrito.Entity.Cliente;
-import com.FrangoFrito.FrangoFrito.Entity.Gerente;
-import com.FrangoFrito.FrangoFrito.Repository.GerenteRepository;
+import com.FrangoFrito.FrangoFrito.Dto.GerenteDTO;
 import com.FrangoFrito.FrangoFrito.Service.GerenteService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +15,11 @@ public class GerenteControler {
     }
 
     @PostMapping("/cadastrarGerente")
-    public void cadastrarGerente(@Valid @RequestBody Gerente gerente){
-        gerenteService.cadastrarGerente(gerente);
+    public void cadastrarGerente(@Valid @RequestBody GerenteDTO gerenteDTO){
+        gerenteService.cadastrarGerente(gerenteDTO);
     }
     @GetMapping("/listarGerente")
-    public List<Gerente> getAllGerente(){
+    public List<GerenteDTO> getAllGerente(){
         return gerenteService.listarGerente();
     }
     @DeleteMapping("/deletarGerente/{id}")
@@ -33,7 +31,6 @@ public class GerenteControler {
         gerenteService.alterarStatusGerente(id);
     }
     @GetMapping("/buscarGerente/{nome}")
-    public Gerente buscarGerente(@PathVariable String nome){
-        return gerenteService.buscarGerente(nome);
+    public GerenteDTO buscarGerentePorNome(@PathVariable String nome){return gerenteService.buscarGerentePorNome(nome);
     }
 }

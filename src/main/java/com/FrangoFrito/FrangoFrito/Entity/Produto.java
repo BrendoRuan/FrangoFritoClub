@@ -1,35 +1,43 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
 import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.BeanUtils;
 
 @Entity
 public class Produto {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotNull
     private String nomeProduto;
+    @NotNull
     private Double valorDeCusto;
+    @NotNull
     private Double valorDeVenda;
+    @NotNull
     private boolean statusProduto;
+    @NotNull
+    private boolean produtoEmDestaque;
+    @NotNull
+    private String descricao;
 
-    @OneToOne
+
+
+    @NotNull
+    @ManyToOne
     @JoinColumn(unique = false)
     private Categoria categoria;
 
-    public Produto(String nomeProduto, Double valorDeCusto, Double valorDeVenda, Categoria categoria) {
+    public Produto(String nomeProduto, Double valorDeCusto, Double valorDeVenda, Categoria categoria,String descricao) {
         this.nomeProduto = nomeProduto;
         this.valorDeCusto = valorDeCusto;
         this.valorDeVenda = valorDeVenda;
         this.categoria = categoria;
+        this.descricao = descricao;
     }
     public Produto() {}
-    public Produto(ProdutoDTO produto){
-        BeanUtils.copyProperties(produto,this);
-    }
 
     public Integer getId() {
         return id;
@@ -77,5 +85,20 @@ public class Produto {
 
     public void setStatusProduto(boolean statusProduto) {
         this.statusProduto = statusProduto;
+    }
+    public boolean isProdutoEmDestaque() {
+        return produtoEmDestaque;
+    }
+
+    public void setProdutoEmDestaque(boolean produtoEmDestaque) {
+        this.produtoEmDestaque = produtoEmDestaque;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }
