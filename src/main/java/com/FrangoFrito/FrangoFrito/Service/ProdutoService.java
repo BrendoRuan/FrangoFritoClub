@@ -38,6 +38,7 @@ public class ProdutoService {
 
         Categoria categoria = categoriaRepository.findById(produtoDTO.getCategoria()).orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
         produto.setCategoria(categoria);
+        produto.setImagem(produtoDTO.getImagem());
         produtoRepository.save(produto);
     }
 

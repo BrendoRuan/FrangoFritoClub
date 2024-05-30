@@ -22,6 +22,7 @@ public class Produto {
     private boolean produtoEmDestaque;
     @NotNull
     private String descricao;
+    private String imagem;
 
 
 
@@ -30,12 +31,13 @@ public class Produto {
     @JoinColumn(unique = false)
     private Categoria categoria;
 
-    public Produto(String nomeProduto, Double valorDeCusto, Double valorDeVenda, Categoria categoria,String descricao) {
+    public Produto(String nomeProduto, String imagem, Double valorDeCusto, Double valorDeVenda, Categoria categoria,String descricao) {
         this.nomeProduto = nomeProduto;
         this.valorDeCusto = valorDeCusto;
         this.valorDeVenda = valorDeVenda;
         this.categoria = categoria;
         this.descricao = descricao;
+        this.imagem = imagem;
     }
     public Produto() {}
 
@@ -100,5 +102,13 @@ public class Produto {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

@@ -13,8 +13,9 @@ public class ProdutoDTO {
     private boolean produtoEmDestaque;
     private Categoria categoria;
     private String descricao;
+    private String imagem;
 
-    public ProdutoDTO(Integer id, String nomeProduto, Double valorDeCusto, Double valorDeVenda, boolean statusProduto, Categoria categoria,boolean produtoEmDestaque,String descricao) {
+    public ProdutoDTO(Integer id,String imagem, String nomeProduto, Double valorDeCusto, Double valorDeVenda, boolean statusProduto, Categoria categoria,boolean produtoEmDestaque,String descricao) {
         this.id = id;
         this.nomeProduto = nomeProduto;
         this.valorDeCusto = valorDeCusto;
@@ -23,7 +24,7 @@ public class ProdutoDTO {
         this.categoria = categoria;
         this.produtoEmDestaque = produtoEmDestaque;
         this.descricao = descricao;
-
+        this.imagem = imagem;
     }
 
     public ProdutoDTO() {
@@ -95,5 +96,13 @@ public class ProdutoDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }
