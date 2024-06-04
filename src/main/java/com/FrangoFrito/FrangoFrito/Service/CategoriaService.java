@@ -1,9 +1,7 @@
 package com.FrangoFrito.FrangoFrito.Service;
 
 import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
-import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
-import com.FrangoFrito.FrangoFrito.Entity.Produto;
 import com.FrangoFrito.FrangoFrito.Repository.CategoriaRepository;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class CategoriaService {

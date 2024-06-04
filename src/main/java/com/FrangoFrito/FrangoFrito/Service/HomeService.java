@@ -1,6 +1,5 @@
 package com.FrangoFrito.FrangoFrito.Service;
 
-import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
 import com.FrangoFrito.FrangoFrito.Dto.ProdutoDestaqueDTO;
 import com.FrangoFrito.FrangoFrito.Dto.ProdutoEscolhidoDTO;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;

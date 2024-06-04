@@ -1,34 +1,34 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
+import com.FrangoFrito.FrangoFrito.Entity.enums.StatusPedido;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
 @Entity
 public class Pedido {
-
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idPedido;
-    private Double valorTotal;
     @OneToOne
+    @NotNull
     private Cliente cliente;
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Produto> produtos;
+    private CarrinhoCompra carrinhoCompra;
     @OneToOne
-    private Funcionario funcionario;
-    @OneToOne
+    @NotNull
     private TipoPagamento tipoPagamento;
-    private boolean statusPedido;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private StatusPedido statusPedido;
     private Pedido(){}
 
-    public Pedido(Integer idPedido, Double valorTotal, List<Produto>  produtos, Funcionario funcionario, TipoPagamento tipoPagamento, boolean statusPedido,Cliente cliente) {
-        this.idPedido = idPedido;
-        this.valorTotal = valorTotal;
-        this.produtos = produtos;
-        this.funcionario = funcionario;
+    public Pedido(Cliente cliente,CarrinhoCompra carrinhoCompras, TipoPagamento tipoPagamento, StatusPedido statusPedido) {
+        this.cliente = cliente;
+        this.carrinhoCompra = carrinhoCompras;
         this.tipoPagamento = tipoPagamento;
         this.statusPedido = statusPedido;
-        this.cliente = cliente;
     }
 
     public Integer getIdPedido() {
@@ -39,43 +39,20 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public Double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public List<Produto>  getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produto) {
-        this.produtos = produtos;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
     public TipoPagamento getTipoPagamento() {
         return tipoPagamento;
     }
+
 
     public void setTipoPagamento(TipoPagamento tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public boolean getStatusPedido() {
+    public StatusPedido getStatusPedido() {
         return statusPedido;
     }
 
-    public void setStatusPedido(boolean statusPedido) {
+    public void setStatusPedido(StatusPedido statusPedido) {
         this.statusPedido = statusPedido;
     }
 
@@ -87,11 +64,19 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public void calcularValorTotal() {
-        double total = 0.0;
-        for (Produto produto : produtos) {
-            total += produto.getValorDeVenda();
-        }
-        this.valorTotal = total;
+    public void cancelarPedido(){
+        this.statusPedido = StatusPedido.CANCELADO;
+    }
+    public void pedidoAceito(){
+        this.statusPedido = StatusPedido.ACEITO;
+    }
+    public void emPreparo(){
+        this.statusPedido = StatusPedido.EM_PREPARO;
+    }
+    public void emTransporte(){
+        this.statusPedido = StatusPedido.EM_TRANSPORTE;
+    }
+    public void entregue(){
+        this.statusPedido  = StatusPedido.ENTREGUE;
     }
 }

@@ -1,37 +1,34 @@
 package com.FrangoFrito.FrangoFrito.Dto;
 
 import com.FrangoFrito.FrangoFrito.Entity.*;
+import com.FrangoFrito.FrangoFrito.Entity.enums.StatusPedido;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
 
 public class PedidoDTO {
     private Integer idPedido;
-    private Double valorTotal;
 
     private Cliente cliente;
 
-    private List<Produto> produto;
-
-    private Funcionario funcionario;
+    private CarrinhoCompra carrinhoCompra;
 
     private TipoPagamento tipoPagamento;
-    private boolean statusPedido;
 
-    public PedidoDTO(Integer idPedido, Double valorTotal, Cliente cliente, List<Produto> produto, Funcionario funcionario, TipoPagamento tipoPagamento, boolean statusPedido) {
+    private StatusPedido statusPedido;
+
+    public PedidoDTO(Integer idPedido,Cliente cliente, CarrinhoCompra carrinhoCompra, TipoPagamento tipoPagamento, StatusPedido statusPedido) {
         this.idPedido = idPedido;
-        this.valorTotal = valorTotal;
         this.cliente = cliente;
-        this.produto = produto;
-        this.funcionario = funcionario;
+        this.carrinhoCompra = carrinhoCompra;
         this.tipoPagamento = tipoPagamento;
         this.statusPedido = statusPedido;
     }
-
     public PedidoDTO(){}
-
-    public PedidoDTO(Pedido pedido){
-        BeanUtils.copyProperties(pedido, this);
+    public PedidoDTO(Pedido pedido) {
+        BeanUtils.copyProperties(pedido,this);
     }
 
     public Integer getIdPedido() {
@@ -42,14 +39,6 @@ public class PedidoDTO {
         this.idPedido = idPedido;
     }
 
-    public Double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
@@ -58,20 +47,12 @@ public class PedidoDTO {
         this.cliente = cliente;
     }
 
-    public List<Produto> getProduto() {
-        return produto;
+    public CarrinhoCompra getCarrinhoCompra() {
+        return carrinhoCompra;
     }
 
-    public void setProduto(List<Produto> produto) {
-        this.produto = produto;
-    }
-
-    public Funcionario getFuncionario() {
-        return funcionario;
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
+    public void setCarrinhoCompra(CarrinhoCompra carrinhoCompra) {
+        this.carrinhoCompra = carrinhoCompra;
     }
 
     public TipoPagamento getTipoPagamento() {
@@ -82,11 +63,11 @@ public class PedidoDTO {
         this.tipoPagamento = tipoPagamento;
     }
 
-    public boolean isStatusPedido() {
+    public StatusPedido getStatusPedido() {
         return statusPedido;
     }
 
-    public void setStatusPedido(boolean statusPedido) {
+    public void setStatusPedido(StatusPedido statusPedido) {
         this.statusPedido = statusPedido;
     }
 }

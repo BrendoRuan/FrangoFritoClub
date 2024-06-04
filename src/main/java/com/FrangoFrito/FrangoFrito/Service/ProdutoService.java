@@ -1,18 +1,14 @@
 package com.FrangoFrito.FrangoFrito.Service;
 
-import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
 import com.FrangoFrito.FrangoFrito.Dto.ProdutoDTO;
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;
 import com.FrangoFrito.FrangoFrito.Repository.CategoriaRepository;
 import com.FrangoFrito.FrangoFrito.Repository.ProdutoRepository;
-import com.FrangoFrito.FrangoFrito.infra.ModelMapperConfig;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
