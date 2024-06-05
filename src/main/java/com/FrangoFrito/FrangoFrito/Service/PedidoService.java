@@ -26,11 +26,7 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-
-    public Pedido cadastrarPedido(Pedido pedido) {
-        return pedidoRepository.save(pedido);
-    }
-    /*public Pedido cadastrarPedido(Cliente cliente, CarrinhoCompra carrinhoCompra, TipoPagamento tipoPagamento) {
+    public Pedido cadastrarPedido(Cliente cliente, CarrinhoCompra carrinhoCompra, TipoPagamento tipoPagamento) {
         // Criar um novo objeto Pedido
         Pedido pedido = new Pedido();
 
@@ -45,5 +41,5 @@ public class PedidoService {
         // Exemplo: pedido.setTotal(carrinhoCompra.getTotal());
         // Salvar pedido no banco de dados
         return pedidoRepository.save(pedido);
-    }*/
+    }
 }

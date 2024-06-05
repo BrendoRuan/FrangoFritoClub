@@ -2,10 +2,8 @@ package com.FrangoFrito.FrangoFrito.Dto;
 
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;
-import jakarta.persistence.Embeddable;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.BeanUtils;
-@Embeddable
+
 public class ProdutoDTO {
     private Integer id;
     private String nomeProduto;
@@ -13,7 +11,6 @@ public class ProdutoDTO {
     private Double valorDeVenda;
     private boolean statusProduto;
     private boolean produtoEmDestaque;
-    @NotNull
     private Categoria categoria;
     private String descricao;
     private String imagem;

@@ -37,8 +37,11 @@ public class Produto {
     private String descricao;
     private String imagem;
 
+
+
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false) // Nome da coluna que faz referência à chave estrangeira
+    @JoinColumn(unique = false)
     private Categoria categoria;
 
     public Produto(String nomeProduto, String imagem, Double valorDeCusto, Double valorDeVenda, Categoria categoria,String descricao) {

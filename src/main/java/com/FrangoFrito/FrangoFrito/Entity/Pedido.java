@@ -16,9 +16,6 @@ public class Pedido {
     private Cliente cliente;
    // @OneToOne
     //private CarrinhoCompra carrinhoCompra;
-    @ElementCollection
-   private List<ItemVenda> itens;
-   private double total;
     @OneToOne
     @NotNull
     private TipoPagamento tipoPagamento;
@@ -27,10 +24,8 @@ public class Pedido {
     private StatusPedido statusPedido;
     public Pedido(){}
 
-    public Pedido(Cliente cliente,double total, /*CarrinhoCompra carrinhoCompra,*/ ItemVenda itemVenda, TipoPagamento tipoPagamento, StatusPedido statusPedido) {
+    public Pedido(Cliente cliente,/*CarrinhoCompra carrinhoCompra,*/ TipoPagamento tipoPagamento, StatusPedido statusPedido) {
         this.cliente = cliente;
-        this.total = total;
-        this.itens = (List<ItemVenda>) itemVenda;
         //this.carrinhoCompra = carrinhoCompra;
         this.tipoPagamento = tipoPagamento;
         this.statusPedido = statusPedido;
@@ -42,22 +37,6 @@ public class Pedido {
 
     public void setIdPedido(Integer idPedido) {
         this.idPedido = idPedido;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public List<ItemVenda> getItens() {
-        return itens;
-    }
-
-    public void setItens(List<ItemVenda> itens) {
-        this.itens = itens;
     }
 
     public TipoPagamento getTipoPagamento() {
