@@ -16,6 +16,19 @@ public class Produto {
     private Double valorDeCusto;
     @NotNull
     private Double valorDeVenda;
+    /*
+    * {
+"nomeProduto":"frango frito",
+"valorDeCusto":8.00,
+"valorDeVenda":13.00,
+"descricao":"Experimente nosso Balde de Frango Frito, a estrela do Club da Asinha! Cada pedaço é selecionado e marinado em temperos secretos, garantindo sabor e suculência incomparáveis",
+"statusProduto":true,
+"produtoEmDestaque":false,
+"categoria":{
+    "id":1
+}
+}
+    * */
     @NotNull
     private boolean statusProduto;
     @NotNull

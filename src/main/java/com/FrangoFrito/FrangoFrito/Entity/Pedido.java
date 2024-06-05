@@ -14,19 +14,19 @@ public class Pedido {
     @OneToOne
     @NotNull
     private Cliente cliente;
-    @OneToMany(cascade = CascadeType.ALL)
-    private CarrinhoCompra carrinhoCompra;
+   // @OneToOne
+    //private CarrinhoCompra carrinhoCompra;
     @OneToOne
     @NotNull
     private TipoPagamento tipoPagamento;
     @NotNull
     @Enumerated(EnumType.STRING)
     private StatusPedido statusPedido;
-    private Pedido(){}
+    public Pedido(){}
 
-    public Pedido(Cliente cliente,CarrinhoCompra carrinhoCompras, TipoPagamento tipoPagamento, StatusPedido statusPedido) {
+    public Pedido(Cliente cliente,/*CarrinhoCompra carrinhoCompra,*/ TipoPagamento tipoPagamento, StatusPedido statusPedido) {
         this.cliente = cliente;
-        this.carrinhoCompra = carrinhoCompras;
+        //this.carrinhoCompra = carrinhoCompra;
         this.tipoPagamento = tipoPagamento;
         this.statusPedido = statusPedido;
     }
@@ -63,6 +63,16 @@ public class Pedido {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    /*public CarrinhoCompra getCarrinhoCompra() {
+        return carrinhoCompra;
+    }
+
+    public void setCarrinhoCompra(CarrinhoCompra carrinhoCompra) {
+        this.carrinhoCompra = carrinhoCompra;}
+
+        */
+
 
     public void cancelarPedido(){
         this.statusPedido = StatusPedido.CANCELADO;

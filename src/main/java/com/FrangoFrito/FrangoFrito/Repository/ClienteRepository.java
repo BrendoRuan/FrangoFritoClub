@@ -13,4 +13,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
     Cliente findByNome(String nome);
     List<Cliente> findByNomeContainingIgnoreCase(String nome);
+
+    Cliente findById(Cliente cliente);
 }

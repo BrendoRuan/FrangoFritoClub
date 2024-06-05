@@ -14,12 +14,12 @@ public class TipoPagamento {
     private Integer id;
     @Size(min=5,max=255)
     @NotNull
-    private Integer nomeTipoPagamento;
+    private String nomeTipoPagamento;
 
     private TipoPagamento(){}
     private boolean statusTipoPagamento;
 
-    public TipoPagamento(Integer id, Integer nomeTipoaPgamento,boolean statusTipoPagamento) {
+    public TipoPagamento(Integer id, String nomeTipoPagamento,boolean statusTipoPagamento) {
         this.id = id;
         this.nomeTipoPagamento = nomeTipoPagamento;
         this.statusTipoPagamento = statusTipoPagamento;
@@ -33,11 +33,11 @@ public class TipoPagamento {
         this.id = id;
     }
 
-    public Integer getNomeTipoPagamento() {
+    public String getNomeTipoPagamento() {
         return nomeTipoPagamento;
     }
 
-    public void setNomeTipoPagamento(Integer nomeTipoPagamento) {
+    public void setNomeTipoPagamento(String nomeTipoPagamento) {
         this.nomeTipoPagamento = nomeTipoPagamento;
     }
 
