@@ -2,8 +2,9 @@ package com.FrangoFrito.FrangoFrito.Dto;
 
 import com.FrangoFrito.FrangoFrito.Entity.Categoria;
 import com.FrangoFrito.FrangoFrito.Entity.Produto;
+import jakarta.persistence.Embeddable;
 import org.springframework.beans.BeanUtils;
-
+@Embeddable
 public class ProdutoDTO {
     private Integer id;
     private String nomeProduto;

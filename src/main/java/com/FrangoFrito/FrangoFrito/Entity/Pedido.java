@@ -4,6 +4,7 @@ import com.FrangoFrito.FrangoFrito.Entity.enums.StatusPedido;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,13 +23,38 @@ public class Pedido {
     @NotNull
     @Enumerated(EnumType.STRING)
     private StatusPedido statusPedido;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemVenda> itens = new ArrayList<>();
+
+    private double total;
     public Pedido(){}
 
-    public Pedido(Cliente cliente,/*CarrinhoCompra carrinhoCompra,*/ TipoPagamento tipoPagamento, StatusPedido statusPedido) {
+    public Pedido(Cliente cliente, double total, /*CarrinhoCompra carrinhoCompra,*/ TipoPagamento tipoPagamento, StatusPedido statusPedido) {
         this.cliente = cliente;
+        this.total = total;
         //this.carrinhoCompra = carrinhoCompra;
         this.tipoPagamento = tipoPagamento;
         this.statusPedido = statusPedido;
+    }
+
+    public void addItem(ItemVenda item) {
+        this.itens.add(item);
+    }
+
+    public List<ItemVenda> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemVenda> itens) {
+        this.itens = itens;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public Integer getIdPedido() {

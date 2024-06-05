@@ -1,6 +1,7 @@
 package com.FrangoFrito.FrangoFrito.Entity;
 
 import com.FrangoFrito.FrangoFrito.Dto.CategoriaDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.BeanUtils;
@@ -19,8 +20,9 @@ public class Categoria {
     @NotNull
     private boolean statusCategoria;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Produto> produtos = new ArrayList<>();
+    @OneToMany(mappedBy = "Categoria",fetch = FetchType.LAZY,cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Produto> produtos = new ArrayList<Produto>();
     public Categoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
     }
@@ -51,6 +53,15 @@ public class Categoria {
 
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
+    }
+    public void addProduto(Produto produto) {
+        produtos.add(produto);
+        produto.setCategoria(this);
+    }
+
+    public void removeProduto(Produto produto) {
+        produtos.remove(produto);
+        produto.setCategoria(null);
     }
 
     public boolean isStatusCategoria() {

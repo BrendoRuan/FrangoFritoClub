@@ -39,9 +39,9 @@ public class Produto {
 
 
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(unique = false)
+    //@NotNull
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Produto(String nomeProduto, String imagem, Double valorDeCusto, Double valorDeVenda, Categoria categoria,String descricao) {
