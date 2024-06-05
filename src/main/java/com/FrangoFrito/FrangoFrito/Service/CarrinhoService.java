@@ -16,7 +16,7 @@ public class CarrinhoService {
     ProdutoRepository produtoRepository;
     ModelMapper modelMapper;
 
-    private final List<ItemVenda> itens = new ArrayList<>();
+    private  List<ItemVenda> itens = new ArrayList<>();
 
     public CarrinhoService(ProdutoRepository produtoRepository, ModelMapper modelMapper) {
         this.produtoRepository = produtoRepository;
@@ -125,5 +125,8 @@ public class CarrinhoService {
         }
 
         return valorItens; // Retorna o valor total dos itens no carrinho
+    }
+    public void limparCarrinho() {
+        removerTodosProdutosDoCarrinho();
     }
 }
