@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/categoria")
 public class CategoriaControler {
     private CategoriaService categoriaService;
     public CategoriaControler(CategoriaService categoriaService){
